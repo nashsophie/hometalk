@@ -1,5 +1,5 @@
 <ul>
-	<li><a href="http://www.reddit.com">This is test site!</li>
-	<li><a href="http://www.google.com">This is where you search stuff</a></li>
-	<li><a href="http://www.railstutor.com">Best place to learn ruby on rails</a></li>
+	<% @posts.each do |post| %>
+		<li><a href="<%= post.url %>"><%= post.title%></a></li>
+		<% end %>
 </ul>
