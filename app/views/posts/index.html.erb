@@ -1,5 +1,6 @@
 <ul>
 	<% @posts.each do |post| %>
-		<li><a href="<%= post.url %>"><%= post.title%></a></li>
+	<li><a href="<%= post.url %>"><%= post.title%></a> (<%= post.comments.count %> comments)
+	</li>
 		<% end %>
 </ul>
