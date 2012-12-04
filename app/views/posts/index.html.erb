@@ -1,8 +1,9 @@
+<p>
+	<%= link_to "Submit a New Link", new_post_path %>
+</p>
 <ul>
 	<% @posts.each do |post| %>
 	<li><a href="<%= post.url %>"><%= post.title%></a> (<a href="<%= post_path(post) %> "><%= post.comments.count %> comments</a>)
 	</li>
 		<% end %>
 </ul>
-
-<a href="">Submit a Link</a>
