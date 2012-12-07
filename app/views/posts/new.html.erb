@@ -8,3 +8,13 @@
 	<br>
 	<%= f.submit "Create Post" %>
 <% end %>
+
+<%= form_tag('/posts', :method => "post") do %>
+<%= label_tag(:post_title, "Title:") %>
+	
+	<%= text_field(:post, :title) %>
+	<%= label_tag(:post_url, "url:") %>
+	<%= text_field(:post, :url) %>
+	<br/>
+	<%= submit_tag("Create Post") %>
+<% end %>
