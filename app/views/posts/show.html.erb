@@ -2,13 +2,29 @@
 	<a href="<%=@post.url %>"> <%= @post.title %></a>
 </p>
 
+
+
 <p>
-	All <%= @post.comments.count %> comments
-	<ul>
-		<% @post.comments.each do |comment| %>
-		<li>
-			<%= comment.content %>
-		</li>
-		<% end %>
-	</ul>
+	<h3> Say something.. </h3>
+	<%= form_for [@post, @comment] do |f| %>
+	 <%= f.text_area :content, rows:5 %>
+	 <br/>
+	 <%= f.submit "Create Comment" %>
+	<% end %>
 </p>
+
+
+<% if @post.comments.reload.empty? %>
+There are no comment yet.
+<% else %>
+	<p>
+		All <%= @post.comments.count %> comments
+		<ul>
+			<% @post.comments.each do |comment| %>
+			<li>
+				<%= comment.content %>
+			</li>
+			<% end %>
+		</ul>
+	</p>
+<% end %>

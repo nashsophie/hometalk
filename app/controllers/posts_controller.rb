@@ -8,13 +8,21 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post = Post.new(params[:post])
-    @post.save
-    redirect_to new_post_path
+    @post = Post.create(params[:post])
+    
+    #@post = Post.new(params[:post])
+    #@post.save
+    #more line
+    
+    redirect_to root_path
   end
   
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comments
+    @comment = @post.comments.build
+    #@comment = @post.comments.new
+    #  build和new都可以，没差别，一般build
   end
   
   def edit
