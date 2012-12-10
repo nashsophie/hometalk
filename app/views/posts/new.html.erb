@@ -1,6 +1,13 @@
 <h1>New post</h1>
 
 <%= form_for @post do |f| %>
+	<% if !@post.valid? %>
+		<div class ='error alert-error'>
+			<ul>
+				<%= @post.errors.full_messages.join("<br/>").html_safe %>
+			</ul>
+		</div>
+	<% end %>
 	<%= f.label :title %>
 	<%= f.text_field :title %>
 	<%= f.label :url %>
@@ -18,3 +25,4 @@
 	<br/>
 	<%= submit_tag("Create Post") %>
 <% end %>
+想起一个问题，如果写中文form，因为各个项名都要写中文，只能用tag helper？？
