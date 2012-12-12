@@ -3,11 +3,6 @@
 </p>
 
 <p>
-vote up | vote down
-</p>
-
-
-<p>
 	<h3> Say something.. </h3>
 	<%= form_for [@post, @comment] do |f| %>
 	 <%= f.text_area :content, rows:5 %>
@@ -17,7 +12,7 @@ vote up | vote down
 </p>
 
 
-<% if @post.comments.reload.empty? %>
+<% if @comments.reload.empty? %>
 There are no comment yet.
 <% else %>
 	<p>

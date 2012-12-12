@@ -8,13 +8,13 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post = Post.create(params[:post])
-    
-    #@post = Post.new(params[:post])
-    #@post.save
-    #more line
-    
-    redirect_to root_path
+    @post = Post.new(params[:post])
+    if @post.save
+      redirect_to root_path
+    else
+      flash[:error] = "Please check Title and URL."
+      render :new
+    end      
   end
   
   def show

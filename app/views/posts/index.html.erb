@@ -1,14 +1,18 @@
 <p>
 	<%= link_to "Submit a New Link", new_post_path %>
 </p>
-
+<p>
 <ul>
 	<% @posts.each do |post| %>
 	<li>(<%= link_to "vote up",  post_votes_path(post, direction: "up"), method: :post %>
 		|
 		<%= link_to "vote down",  post_votes_path(post, direction: "down"), method: :post %> )
 		- <%= post.vote_count %> -
-		 <a href="<%= post.url %>"><%= post.title%></a> (<a href="<%= post_path(post) %> "><%= post.comments.count %> comments</a>)
+		 (id:<%= post.id %>) <a href="<%= post.url %>"><%= post.title%></a> (<a href="<%= post_path(post) %> "><%= post.comments.count %> comments</a>)
 	</li>
 		<% end %>
 </ul>
+</p>
+<p>
+	<%= link_to "Submit a New Link", new_post_path %>
+</p>
