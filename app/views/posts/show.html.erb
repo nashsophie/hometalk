@@ -2,6 +2,7 @@
 	<a href="<%=@post.url %>"> <%= @post.title %></a>
 </p>
 
+<% if logged_in? %>
 <p>
 	<h3> Say something.. </h3>
 	<%= form_for [@post, @comment] do |f| %>
@@ -10,19 +11,31 @@
 	 <%= f.submit "Create Comment" %>
 	<% end %>
 </p>
-
+<% else %>
+只有登陆才能评论
+<%= link_to "Register", register_path %> | <%= link_to "Login", login_path %>
+<br/>
+<% end %>
 
 <% if @comments.reload.empty? %>
 There are no comment yet.
 <% else %>
+	<% if logged_in? %>
 	<p>
 		All <%= @post.comments.count %> comments
 		<ul>
 			<% @post.comments.each do |comment| %>
+			
 			<li>
-				<%= comment.content %>
+				<%= comment.try(:user).try(:username) %>: <%= comment.content %>
+				
 			</li>
 			<% end %>
 		</ul>
 	</p>
+	<% else %>
+	必须登陆才能查看留言
+	
+	<% end %>
+	
 <% end %>

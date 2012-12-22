@@ -9,3 +9,16 @@
        <tt>rails server</tt>
 
 3. Go to http://localhost:3000 with a browser.
+
+
+### 工作方式
+
+### 工具
+
+1.rake
+2.ruby
+3.textmate
+4.git/github
+
+
+### 原则

@@ -1,9 +1,10 @@
 class CommentsController < ApplicationController
+  before_filter :require_user, only: [:new, :create, :edit, :update, :destory]
   def create  
     @post = Post.find(params[:post_id])
-    @comments = @post.comments
-    @comment = @post.comments.build(params[:comment])
     
+    @comment = @post.comments.build(params[:comment])
+    @comment.user_id = current_user.id
     if @comment.save
       flash[:notice]="Your comment is added successful"
       redirect_to @post

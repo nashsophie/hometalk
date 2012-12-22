@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  before_filter :find_post, only: [:show, :edit]
+  before_filter :require_user, only: [:new, :create, :edit, :update, :destory]
+  
   def index
     @posts = Post.all
   end
@@ -10,6 +13,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     if @post.save
+      flash[:notice]= "Your post is added successfully"
       redirect_to root_path
     else
       flash[:error] = "Please check Title and URL."
@@ -18,7 +22,6 @@ class PostsController < ApplicationController
   end
   
   def show
-    @post = Post.find(params[:id])
     @comments = @post.comments
     @comment = @post.comments.build
     #@comment = @post.comments.new
@@ -26,6 +29,10 @@ class PostsController < ApplicationController
   end
   
   def edit
+  end
+  
+  def find_post
     @post = Post.find(params[:id])
   end
+  
 end

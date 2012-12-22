@@ -1,7 +1,4 @@
 <p>
-	<%= link_to "Submit a New Link", new_post_path %>
-</p>
-<p>
 <ul>
 	<% @posts.each do |post| %>
 	<li>(<%= link_to "vote up",  post_votes_path(post, direction: "up"), method: :post %>
@@ -13,6 +10,9 @@
 		<% end %>
 </ul>
 </p>
+
+<% if logged_in? %>
 <p>
 	<%= link_to "Submit a New Link", new_post_path %>
 </p>
+<% end %>

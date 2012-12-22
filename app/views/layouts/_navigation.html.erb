@@ -1,1 +1,6 @@
-<h1>HomeTalk</h1>
+<% if logged_in? %>
+Welcome! <%= current_user.username %> | <%= link_to "Logout", logout_path %>
+<% else %>
+<%= link_to "Register", register_path %> | <%= link_to "Login", login_path %>
+	
+<% end %>
