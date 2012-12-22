@@ -1,6 +1,6 @@
 CourseProject::Application.routes.draw do
   resources :posts
-  resources :users, only: [:create]
+  resources :users, only: [:create,:show]
   
   get 'register', to: 'users#new', as: 'register'
   get 'login', to: 'sessions#new', as: 'login'

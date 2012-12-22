@@ -1,0 +1,16 @@
+<ul>
+	<li>用户名: <%= @user.username %></li>
+	<li>joined the community: <%= @user.created_at %></li>
+	<hr>
+	<li>recent posts</li>
+	<hr>
+	<li>recent comments:
+		<%= @user.comments.try(:reverse)[0..9].each do |comment| %>
+		<%= comment.content %>
+		<br>
+		<%end %>
+	</li>
+	
+	<hr>
+	<li>recent votes</li>
+</ul>
